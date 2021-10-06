@@ -1,0 +1,67 @@
+<div class="body">
+    <div class="w-100 d-flex justify-content-center pt-1">
+        <h2 class="text-center font-weight-bold w-50 bg-info">Top 10 employees</h2>
+    </div>
+    <div class="container">
+        <div *ngIf="employees.length > 0"
+            class="top-three d-flex justify-content-around pt-4">
+            <div class="top1 d-flex justify-content-center align-self-start order-2">
+                <img
+                    class="rounded-circle"
+                    [src]="employees[0].imageUrl"
+                />
+                <div class="name-and-medal align-self-end d-flex flex-column">
+                    <img class="medal" src="assets/image/top1.png"/>
+                    <span> {{ employees[0].numberOfHearts }} <i class="fa fa-heart"></i></span>
+                    <span [routerLink]="['/employee', employees[0].employee_id]"> {{ employees[0].name }}</span>
+                </div>
+            </div>
+            <div class="top2 d-flex justify-content-center align-self-end order-1">
+                <img
+                    class="rounded-circle"
+                    [src]="employees[1].imageUrl"
+                />
+                <div class="name-and-medal align-self-end d-flex flex-column">
+                    <img class="medal" src="assets/image/top2.png"/>
+                    <span> {{ employees[1].numberOfHearts }} <i class="fa fa-heart"></i></span>
+                    <span [routerLink]="['/employee', employees[1].employee_id]"> {{ employees[1].name }}</span>
+                </div>
+            </div>
+            <div class="top3 d-flex justify-content-center align-self-end order-3">
+                <img
+                    class="rounded-circle"
+                    [src]="employees[2].imageUrl"
+                />
+                <div class="name-and-medal align-self-end d-flex flex-column">
+                    <img class="medal" src="assets/image/top3.png"/>
+                    <span> {{ employees[2].numberOfHearts }} <i class="fa fa-heart"></i></span>
+                    <span [routerLink]="['/employee', employees[2].employee_id]"> {{ employees[2].name }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="table-container pb-3">
+            <table class="table table-light table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th style="width: 10%;" class="text-right">#</th>
+                        <th style="width: 75%;" class="text-left">Name</th>
+                        <th style="width: 15%;" class="text-right"><i class="fa fa-heart"></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of employees; let i = index">
+                        <!-- <ng-template *ngIf="i > 2"> -->
+                            <th class="text-right">{{ i + 1 }}</th>
+                            <td [routerLink]="['/employee', employee.employee_id]"
+                                class="text-left font-weight-bold"
+                                style="cursor: pointer;">
+                                {{ employee.name }}
+                            </td>
+                            <td class="text-right">{{ employee.numberOfHearts }}</td>
+                        <!-- </ng-template> -->
+                    </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

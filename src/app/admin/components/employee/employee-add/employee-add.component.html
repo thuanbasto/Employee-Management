@@ -1,0 +1,153 @@
+<div>
+    <div class="text-center">
+        <h1 class="d-inline pb-0">Add employee</h1>
+    </div>
+    <div class="pl-5 pr-5 pt-2">
+        <form [formGroup]="form" class="row d-flex">
+            <div class="col-9 form-right d-flex flex-wrap justify-content-around order-3">
+                <div class="form-group">
+                    <label for="name">Name <span class="text-danger">*</span></label>
+                    <input
+                        id="name"
+                        formControlName="name"
+                        type="text"
+                        class="form-control"
+                        [ngClass]="{
+                            'is-invalid': name.invalid && (name.touched || name.dirty),
+                            'is-valid' : name.valid && (name.touched || name.dirty)
+                        }"
+                    >
+                    <app-error-message
+                        [control]="name" controlName="Name"
+                    ></app-error-message>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address <span class="text-danger">*</span></label>
+                    <input
+                        formControlName="address"
+                        id="address"
+                        type="text"
+                        class="form-control"
+                        [ngClass]="{
+                            'is-invalid': address.invalid && (address.touched || address.dirty),
+                            'is-valid' : address.valid && (address.touched || address.dirty)
+                        }">
+                    <app-error-message
+                        [control]="address" controlName="Address"
+                    ></app-error-message>
+                </div>
+                <div class="form-group">
+                    <label for="birthday">Birthday <span class="text-danger">*</span></label>
+                    <input
+                        id="birthday"
+                        formControlName="birthday"
+                        type="date"
+                        class="form-control"
+                        max='9999-12-30'
+                        [ngClass]="{
+                            'is-invalid': birthday.invalid && (birthday.touched || birthday.dirty),
+                            'is-valid' : birthday.valid && (birthday.touched || birthday.dirty)
+                        }">
+                        <app-error-message
+                            [control]="birthday" controlName="Birthday"
+                        ></app-error-message>
+                </div>
+                <div class="form-group" formGroupName="department">
+                    <label for="department_id">Department <span class="text-danger">*</span></label>
+                    <select
+                        id="department_id"
+                        formControlName="department_id"
+                        class="form-control"
+                        [ngClass]="{
+                            'is-invalid': department_id.invalid && (department_id.touched || department_id.dirty),
+                            'is-valid' : department_id.valid && (department_id.touched || department_id.dirty)
+                        }">
+                        <option value="">--- Please choose one</option>
+                        <option *ngFor="let department of departments" [value]="department.department_id">
+                            {{ department.departmentName }}
+                        </option>
+                    </select>
+                    <app-error-message
+                        [control]="department_id" controlName="Department"
+                    ></app-error-message>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone <span class="text-danger">*</span></label>
+                    <input
+                        id="phone"
+                        formControlName="phone"
+                        type="text"
+                        class="form-control"
+                        [ngClass]="{
+                            'is-invalid': phone.invalid && (phone.touched || phone.dirty),
+                            'is-valid' : phone.valid && (phone.touched || phone.dirty)
+                        }">
+                    <app-error-message
+                        [control]="phone" controlName="Phone"
+                    ></app-error-message>
+                </div>
+                <div class="form-group">
+                    <label for="placeOfBirth">Place of birth <span class="text-danger">*</span></label>
+                    <input
+                        id="placeOfBirth"
+                        formControlName="placeOfBirth"
+                        type="text"
+                        class="form-control"
+                        [ngClass]="{
+                            'is-invalid': placeOfBirth.invalid && (placeOfBirth.touched || placeOfBirth.dirty),
+                            'is-valid' : placeOfBirth.valid && (placeOfBirth.touched || placeOfBirth.dirty)
+                        }">
+                    <app-error-message
+                        [control]="placeOfBirth" controlName="Place of birth"
+                    ></app-error-message>
+                </div>
+                <div class="form-group married">
+                    <label>
+                        <input
+                            formControlName="married"
+                            type="checkbox"
+                            id="married"> Married
+                    </label>
+                </div>
+                <div class="form-group description">
+                    <label for="description">Description</label>
+                    <textarea
+                        id="description"
+                        formControlName="description"
+                        [ngClass]="{
+                            'is-invalid': description.invalid && (description.touched || description.dirty),
+                            'is-valid' : description.valid && (description.touched || description.dirty)
+                        }"
+                        rows="5"
+                        class="form-control">
+                    </textarea>
+                    <app-error-message
+                        [control]="description" controlName="Description"
+                    ></app-error-message>
+                </div>
+            </div>
+            <div class="col-3 d-flex justify-content-start flex-column order-2">
+                <img
+                    id="imageSrc"
+                    [src]="previewImageUrl" alt="">
+                <div *ngIf="errorMessageFile != '' " class="text-danger">{{ errorMessageFile }}</div>
+                <input
+                    formControlName="imageUrl"
+                    id="imageUrl"
+                    hidden
+                    type="text">
+                <input
+                    #file
+                    hidden
+                    type="file"
+                    id="file"
+                    (change)="previewImage($event)">
+                <button id="btnFile" (click)="file.click()" class="btn btn-primary mr-auto ml-auto mt-3">Upload avatar</button>
+            </div>
+            <div class="d-flex col-12 justify-content-end order-1">
+                <button id="btnBack" type="submit" routerLink="/admin/employee" class="btn btn-primary mr-1">Back</button>
+                <button id="btnSubmit" type="submit" (click)="addEmployee()" class="btn btn-success mr-3">Add employee</button>
+            </div>
+        </form>
+    </div>
+</div>

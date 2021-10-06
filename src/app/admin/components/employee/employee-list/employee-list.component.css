@@ -1,0 +1,40 @@
+h2 {
+    border-bottom: 2px solid orange;
+}
+
+.td-name {
+    cursor: pointer;
+}
+
+/* table style*/
+
+thead tr th {
+    cursor: pointer;
+}
+
+thead tr th:last-child {
+    cursor: default;
+}
+tbody td {
+    padding: 0.4rem 0.5rem !important;
+}
+
+
+table {
+    max-height: 483px;
+    overflow:hidden;
+    overflow-y:scroll;
+    display:block;
+}
+
+th {
+    top: 0;
+    z-index: 2;
+    position: sticky;
+    background-color: #343a40;
+}
+
+td button {
+    padding: 1px 6px;
+}
+/* end table style */

@@ -1,0 +1,8 @@
+/* @media (max-width: 970px) {
+    #navbarSupportedContent {
+        background-color: black;
+    }
+} */
+li:hover {
+    font-weight: bold;
+}

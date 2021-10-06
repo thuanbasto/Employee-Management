@@ -1,0 +1,13 @@
+.menu-header {
+    width: 80%;
+    border-bottom: 1px solid white;
+    margin: 0 auto;
+}
+
+.nav-group:hover {
+    cursor: pointer;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: #199a36;
+}

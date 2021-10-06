@@ -1,0 +1,34 @@
+<div class="home-container w-100 h-100">
+    <div class="container pt-4">
+        <div class="card-columns">
+            <div
+                *ngFor="let employee of employees"
+                [routerLink]="['/employee', employee.employee_id]"
+                class="card border-info"
+            >
+                <img
+                    [src]="
+                        employee.imageUrl
+                            ? URL_IMAGE + '/' + employee.imageUrl
+                            : 'assets/image/default-image.jpg'
+                    "
+                    class="card-img-top border"
+                    alt="..."
+                />
+                <div class="card-body">
+                    <h5 class="card-title">{{ employee.name }}</h5>
+                </div>
+            </div>
+        </div>
+
+        <app-pagination
+            [arrLength]="employees.length"
+            [size]="size"
+            [page]="page"
+            [pageTotal]="pageTotal"
+            [numberTotal]="numberTotal"
+            (changePage)="searchEmployee($event)"
+        ></app-pagination>
+
+    </div>
+</div>

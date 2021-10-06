@@ -3,8 +3,22 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyDOs_b6eCfJ6OJObUFcr612IdVtqFpitEg",
+    authDomain: "fpt-chat-ffbed.firebaseapp.com",
+    databaseURL: "https://fpt-chat-ffbed-default-rtdb.firebaseio.com",
+    projectId: "fpt-chat-ffbed",
+    storageBucket: "fpt-chat-ffbed.appspot.com",
+    messagingSenderId: "241098495429",
+    appId: "1:241098495429:web:c33162079ebac7b81227ac",
+    measurementId: "G-KLJD3JB2F4"
+  },
 };
+
+export const URL_BACKEND = "http://localhost:8081";
+export const URL_IMAGE = "http://localhost:8081/static/image";
+export const URL_IMAGE_DEFAULT = "assets/image/default-image.jpg";
 
 /*
  * For easier debugging in development mode, you can import the following file

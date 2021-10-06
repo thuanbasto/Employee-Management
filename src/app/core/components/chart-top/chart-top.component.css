@@ -1,0 +1,54 @@
+.top-three {
+    height: 300px;
+}
+
+.top-three > div > img:first-child {
+    width: 100%;
+    height: 100%;
+}
+
+.top1, .top2, .top3 {
+    width: 25%;
+    height: 200px;
+    position: relative;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.name-and-medal {
+    position: absolute;
+    width: 100%;
+    top: 150px;
+}
+
+.medal {
+    height: 100px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.name-and-medal > span:last-child {
+    cursor: pointer;
+}
+
+.name-and-medal > span:last-child:hover {
+    color: turquoise;
+}
+
+.body {
+    background-image: url("/assets/image/background.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    min-height: 92vh;
+    color: white;
+}
+
+.fa-heart{
+    color: rgb(238, 50, 50);
+}
+
+.table-container {
+    padding-top: 120px;
+}

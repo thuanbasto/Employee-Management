@@ -1,0 +1,199 @@
+<div class="pl-2 pr-2">
+    <div class="text-center">
+        <h2 class="d-inline pb-0">Deparment list</h2>
+    </div>
+    <div class="p-1">
+        <div class="d-flex justify-content-between mb-1">
+            <input
+                type="text"
+                class="form-control w-25"
+                [(ngModel)]="search"
+                id="search"
+                placeholder="Search by all fields"
+            />
+            <div>
+                <button class="btn btn-danger mr-1" (click)="deleteDepartments()">
+                    <i class="fas fa-trash"></i> Delele departments
+                </button>
+                <button
+                    (click)="showAddDepartmentModal()"
+                    id="btnAdd"
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target="#addDepartmentModal"
+                >
+                <i class="fas fa-plus"></i> Add department
+            </button>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="bg-dark text-light">
+                    <tr>
+                        <th>
+                            <input type="checkbox" (click)="checkedAll($event)" id="chk_all">
+                        </th>
+                        <th style="width: 10%" (click)="changeSortBy('department_id')">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>#</span>
+                                <i class="fa fa-sort"></i>
+                            </div>
+                        </th>
+                        <th style="width: 75%" (click)="changeSortBy('departmentName')">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span>Department name</span>
+                                <i class="fa fa-sort"></i>
+                            </div>
+                        </th>
+                        <th style="width: 15%">
+                            <span>Action</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let department of departments; let i = index">
+                        <td>
+                            <input class="chk_delete w-100" [value]="department.department_id" type="checkbox">
+                        </td>
+                        <td class="text-right">
+                            <span *ngIf="sortBy == 'department_id' && sortDirection== 'ASC'; else DESC">
+                                {{ numberTotal - i  - (size * (page - 1)) }}
+                            </span>
+                            <ng-template #DESC>
+                                <span>
+                                    {{ i + 1 + (size * (page - 1)) }}
+                                </span>
+                            </ng-template>
+                        </td>
+                        <td>
+                            {{
+                                department.departmentName.length > 50
+                                    ? (department.departmentName | slice: 0:50) +
+                                      ".."
+                                    : department.departmentName
+                            }}
+                        </td>
+                        <td>
+                            <button
+                                (click)="showUpdateDepartmentModal(department)"
+                                class="btn btn-info mr-1"
+                            >
+                                <i class="fas fa-edit fa-sm"></i>
+                            </button>
+                            <button
+                                (click)="deleteDepartment(department.department_id)"
+                                data-toggle="modal"
+                                data-target="#modal-delete"
+                                class="btn btn-danger"
+                            >
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <p
+                class="alert alert-danger text-center"
+                *ngIf="departments?.length == 0"
+            >
+                Not found
+            </p>
+        </div>
+
+        <app-pagination
+            [arrLength]="departments.length"
+            [size]="size"
+            [page]="page"
+            [pageTotal]="pageTotal"
+            [numberTotal]="numberTotal"
+            (changePage)="searchDepartment($event)"
+        ></app-pagination>
+    </div>
+
+    <!-- Modal -->
+    <div
+        class="modal fade"
+        id="addDepartmentModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Add department
+                    </h5>
+                    <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                    >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="form">
+                        <div class="form-group">
+                            <label class="font-weight-bold">ID</label>
+                            <input
+                                id="department_id"
+                                disabled
+                                formControlName="department_id"
+                                type="text"
+                                class="form-control"
+                            />
+                        </div>
+                        <div class="form-group mb-0" style="height: 94px;">
+                            <label class="font-weight-bold"
+                                >Department name
+                                <span class="text-danger">*</span></label
+                            >
+                            <input
+                                id="departmentName"
+                                formControlName="departmentName"
+                                type="text"
+                                autocomplete="off"
+                                class="form-control"
+                                [ngClass]="{
+                                    'is-invalid':
+                                        departmentName.invalid &&
+                                        (departmentName.touched || departmentName.dirty),
+                                    'is-valid' :
+                                        departmentName.valid &&
+                                        (departmentName.touched || departmentName.dirty)
+                                }"
+                            />
+                            <app-error-message
+                                [control]="departmentName"
+                                controlName="Department name"
+                            ></app-error-message>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        id="btnClose"
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    <button
+                        id="btnSave"
+                        (click)="saveDepartment()"
+                        type="button"
+                        class="btn btn-primary"
+                    >
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

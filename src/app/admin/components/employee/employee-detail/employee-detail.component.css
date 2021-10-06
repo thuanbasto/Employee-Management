@@ -1,0 +1,77 @@
+h1 {
+    border-bottom: 2px solid orange;
+}
+
+.row .col-4, .col-7 {
+    font-size: 1.3em;
+}
+
+.iHeart {
+    color: rgb(238, 50, 50);
+}
+
+#btnHeart {
+    border: 1px solid rgb(238, 50, 50);
+}
+
+#btnHeart:hover {
+    border: 2px solid rgb(238, 50, 50);
+}
+
+.image-heart {
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+.heart {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* transform: scale(1.5); */
+    background: url(/assets/image/heart.png) no-repeat;
+    background-position: 0 0;
+    cursor: pointer;
+    animation: fave-heart 1s steps(28);
+}
+
+@keyframes fave-heart {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -2800px 0;
+    }
+}
+
+.last-row {
+    font-size: 1.3rem;
+}
+
+.last-row span {
+    word-break: break-word;
+    padding-left: 0.2em;
+}
+
+.col-4, .col-3 {
+    padding-left: 0;
+}
+
+.col-1 {
+    flex: 0 0 8.333333%;
+    max-width: 2.333333%;
+}
+.col-3 {
+    max-width: 21.4%;
+}
+
+.last-row .col-1 {
+    max-width: 3.333333%;
+}
+
+.row {
+    margin: 0;
+}

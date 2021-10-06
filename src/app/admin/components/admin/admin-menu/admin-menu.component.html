@@ -1,0 +1,40 @@
+<ul class="nav nav-pills flex-column bg-dark h-100">
+    <div class="menu-header d-flex justify-content-center align-items-center pt-2 pb-2">
+        <i class="text-light fas fa-tachometer-alt fa-2x mr-2"></i>
+        <a class="text-light navbar-brand font-weight-bold text-decoration-none" routerLink="/admin">Admin</a>
+    </div>
+    <div>
+        <!-- employee managerment -->
+        <div class="nav-group text-light font-weight-bold d-flex justify-content-lg-between mt-2"
+            data-toggle="collapse" data-target="#collapseEmployee">
+            <p class="nav-link m-0"><i class="text-light fas fa-users fa-lg"></i> Employees</p>
+            <i class="fas fa-caret-down mt-auto mb-auto mr-2"></i>
+        </div>
+        <div class="collapse ml-1" id="collapseEmployee">
+            <li class="nav-item pl-4">
+                <a class="nav-link text-light font-weight-bold" routerLink="employee" routerLinkActive="active">
+                    <i class="fas fa-tasks"></i> List
+                </a>
+            </li>
+        </div>
+        <!-- end employee managerment -->
+
+        <!-- department managerment -->
+        <div class="nav-group text-light font-weight-bold d-flex justify-content-lg-between mt-2"
+            data-toggle="collapse" data-target="#collapseDepartment">
+            <p class="nav-link m-0"><i class="text-light fas fa-building fa-lg"></i> Departments</p>
+            <i class="fas fa-caret-down mt-auto mb-auto mr-2"></i>
+        </div>
+        <div class="collapse ml-1" id="collapseDepartment">
+            <li class="nav-item pl-4">
+                <a class="nav-link text-light font-weight-bold" routerLink="department" routerLinkActive="active">
+                    <i class="fas fa-tasks"></i> List
+                </a>
+            </li>
+        </div>
+    </div>
+
+
+</ul>
+
+
